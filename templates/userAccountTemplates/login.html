@@ -1,0 +1,50 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+<section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <br> <br>
+    <section class="align-items-center">
+        <div class="south-search-area">
+        <div class="container">
+            <div class="row">
+     <div class="col-md-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+     </div>
+     </div>
+        </div>
+        </div>
+    </section>
+            <!-- Section Heading -->
+                    <br>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
+        </div>
+        </div>
+
+
+    </section>
+
+
+{% endblock %}

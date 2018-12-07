@@ -1,0 +1,256 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% block content %}
+{% load static %}
+
+    <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your home</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero2.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your dream house</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero3.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your perfect house</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Hero Area End ##### -->
+
+    <!-- ##### Advance Search Area Start ##### -->
+    <div class="south-search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="advanced-search-form">
+                        <!-- Search Title -->
+                        <div class="search-title">
+                            <p>Search for your home</p>
+                        </div>
+                        <!-- Search Form -->
+                        <form method="GET" action="{% url 'search-page' %}" id="advanceSearch">
+                            <div class="row">
+
+                                <div class="col-12 col-md-4 col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="q" value="{{ request.GET.q }}" placeholder="Search">
+                                    </div>
+                                </div>
+                            <div class="col-12 search-form-second-steps">
+                                    <div class="row">
+
+                                        <div class="col-12 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="types" name="q1" >
+                                                    <option value="" disabled selected>No. of Bathrooms</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="types" name="q2">
+                                                    <option value="" disabled selected>No. of Rooms</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <select class="form-control" id="types" name="q3">
+                                                    <option value="" disabled selected>No. of Floors</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4 col-lg-6">
+                                            <div class="form-group">
+                                                 <input type="text" class="form-control" name="q4" value="{{ request.GET.q4 }}" placeholder="Min Price">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-6">
+                                            <div class="form-group">
+                                                 <input type="text" class="form-control" name="q5" value="{{ request.GET.q5 }}" placeholder="Max Price">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="col-12 d-flex justify-content-between align-items-end">
+                                    <!-- More Filter -->
+                                    <div class="more-filter">
+                                        <a href="#" id="moreFilter">+ More filters</a>
+                                    </div>
+                                    <!-- Submit -->
+                                    <div class="form-group mb-0">
+                                        <button type="submit" class="btn south-btn">Search</button>
+                                    </div>
+                                </div>
+
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Advance Search Area End ##### -->
+
+<br> <br> <br>
+    <section class="align-items-center">
+        <div class="south-search-area">
+        <div class="container">
+            <div class="row">
+     <div class="col-md-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+     </div>
+     </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- ##### Featured Properties Area Start ##### -->
+    <section class="featured-properties-area section-padding-100-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp">
+                        <h2>Featured Properties</h2>
+                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Single Featured Property -->
+
+                <!-- ================================================================================================== -->
+
+                {% for data in adverts %}
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            {% if data.propertyImage != None %}
+                                <img src="media/{{ data.propertyImage }}">
+                            {% endif %}
+                            <div class="tag">
+                                <span>For Sale</span>
+                            </div>
+                            <div class="list-price">
+                                <p>${{ data.property__propertyAskingPrice }}</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5><a class="mr-2" href="{% url 'property-detail' data.property__id %}">{{ data.property__propertyTitle }}</a></h5>
+                            <p class="location"><img src="{% static 'img/icons/location.png' %}" alt="">{{ data.property__propertyStreetNumber }}, {{ data.property__propertyStreet }}</p>
+                            <p>
+                                Postal Code: {{ data.property__propertyPostalCode }}<br>
+                                Built on: {{ data.property__propertyConstructionDate }}<br>
+                                Number of Rooms: {{ data.property__propertyNumberOfRooms }}<br>
+                                Number of Floors: {{ data.property__propertyNumberOfFloors }}<br>
+                            </p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="{% static 'img/icons/new.png' %}" alt="">
+                                </div>
+                                <div class="bathroom">
+                                    <img src="{% static 'img/icons/bathtub.png' %}" alt="">
+                                    <span>{{ data.property__propertyNumberOfBathrooms }}</span>
+                                </div>
+
+                                <div class="space">
+                                    <img src="{% static 'img/icons/space.png' %}" alt="">
+                                    <span>{{ data.property__propertyTotalArea }} Sq ft.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+                <!-- ================================================================================================== -->
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Featured Properties Area End ##### -->
+
+    <!-- ##### Editor Area Start ##### -->
+    <section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <!-- Section Heading -->
+            <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                <img src="{% static 'img/icons/prize.png' %}" alt="">
+                <h2>Afnan Ur Rehman</h2>
+                <p>Realtor</p>
+            </div>
+            <p class="wow fadeInUp" data-wow-delay="500ms">
+                Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.
+            </p>
+            <div class="address wow fadeInUp" data-wow-delay="750ms">
+                <h6><img src="{% static 'img/icons/phone-call.png' %}" alt=""> +45 677 8993000 223</h6>
+                <h6><img src="{% static 'img/icons/envelope.png' %}" alt=""> office@template.com</h6>
+            </div>
+        </div>
+
+        <!-- Editor Thumbnail -->
+        <div class="editor-thumbnail">
+            <img src="{% static 'img/bg-img/editor.jpg' %}" alt="">
+        </div>
+    </section>
+    <!-- ##### Editor Area End ##### -->
+
+   {% endblock %}

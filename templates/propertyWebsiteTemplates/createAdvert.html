@@ -1,0 +1,39 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+    <section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <!-- Section Heading -->
+                    <br>        <br>        <br>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                <h2>Post your Advert</h2>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"></legend>
+                    {{ propertyForm|crispy }}
+                    {{ propertyImageForm|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-primary float-right">Create Advert</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </section>
+
+{% endblock %}

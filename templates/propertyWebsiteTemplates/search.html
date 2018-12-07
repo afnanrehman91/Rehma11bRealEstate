@@ -1,0 +1,140 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% block content %}
+    {% load static %}
+
+    <!-- ##### Hero Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero1.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your home</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero2.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your dream house</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/hero3.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Find your perfect house</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="align-items-center">
+        <div class="editor-content-area">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+
+
+    <!-- ##### Featured Properties Area Start ##### -->
+    <section class="featured-properties-area section-padding-100-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp">
+                        <h2>Search Properties Results</h2>
+                        {#                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>#}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Single Featured Property -->
+
+                <!-- ================================================================================================== -->
+
+                {% if images %}
+                    {% for data in images %}
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                                <!-- Property Thumbnail -->
+                                <div class="property-thumb">
+                                    {% if data.propertyImage != None %}
+                                        <img src="../media/{{ data.propertyImage }}">
+                                    {% endif %}
+                                    <div class="tag">
+                                        <span>For Sale</span>
+                                    </div>
+                                    <div class="list-price">
+                                        <p>${{ data.property__propertyAskingPrice }}</p>
+                                    </div>
+                                </div>
+                                <!-- Property Content -->
+                                <div class="property-content">
+                                    <h5>{{ data.property__propertyTitle }}</h5>
+                                    <p class="location"><img src="{% static 'img/icons/location.png' %}"
+                                                             alt="">{{ data.property__propertyStreetNumber }}, {{ data.property__propertyStreet }}
+                                    </p>
+                                    <p>
+                                        Postal Code: {{ data.property__propertyPostalCode }}<br>
+                                        Built on: {{ data.property__propertyConstructionDate }}<br>
+                                        Number of Rooms: {{ data.property__propertyNumberOfRooms }}<br>
+                                        Number of Floors: {{ data.property__propertyNumberOfFloors }}<br>
+                                    </p>
+                                    <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                        <div class="new-tag">
+                                            <img src="{% static 'img/icons/new.png' %}" alt="">
+                                        </div>
+                                        <div class="bathroom">
+                                            <img src="{% static 'img/icons/bathtub.png' %}" alt="">
+                                            <span>{{ data.property__propertyNumberOfBathrooms }}</span>
+                                        </div>
+
+                                        <div class="space">
+                                            <img src="{% static 'img/icons/space.png' %}" alt="">
+                                            <span>{{ data.property__propertyTotalArea }} Sq ft.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% else %}
+
+                                <div class="col-12">
+                                    <div class="section-heading wow fadeInUp">
+                                        <h4>No record found matching the criteria!</h4>
+                                    </div>
+                                </div>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

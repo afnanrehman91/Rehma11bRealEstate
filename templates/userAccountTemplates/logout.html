@@ -1,0 +1,22 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% block content %}
+{% load static %}
+
+<section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <!-- Section Heading -->
+                    <br>        <br>        <br>
+       <h2>Success: You have been logged out!</h2>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a href="{% url 'login' %}">Log in Again</a>
+            </small>
+        </div>
+        </div>
+
+
+    </section>
+
+
+{% endblock %}

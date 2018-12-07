@@ -1,0 +1,47 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% load static %}
+
+    <section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <!-- Section Heading -->
+            <br> <br> <br>
+
+            <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                <h2>Advert Details</h2>
+            </div>
+
+            <article class="media content-section">
+                <div class="media-body">
+
+                    <h4>{{ object.propertyTitle }}</h4>
+                    <h6>Street : {{ object.propertyStreet }}</h6>
+                    <h6>City : {{ object.propertyCity }}</h6>
+                    <h6>Province : {{ object.propertyProvince }}</h6>
+                    <h6>Country : {{ object.propertyCountry }}</h6>
+                    <h6>Postal Code : {{ object.propertyPostalCode }}</h6>
+                    <h6>Posted On : {{ object.propertyRegistrationDate }}</h6>
+                    <h6>No. Of Rooms : {{ object.propertyNumberOfRooms }}</h6>
+                    <h6>No. Of Bathrooms : {{ object.propertyNumberOfBathrooms }}</h6>
+                    <h6>No. Of Floors : {{ object.propertyNumberOfFloors }}</h6>
+                    <h6>Price : ${{ object.propertyAskingPrice }}</h6>
+
+                    {% if object.user == user %}
+                        <div>
+                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'property-update' object.id %}">Update</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1"
+                               href="{% url 'property-delete' object.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </article>
+
+        </div>
+
+
+    </section>
+
+{% endblock %}

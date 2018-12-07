@@ -1,0 +1,31 @@
+{% extends "propertyWebsiteTemplates/layout.html" %}
+{% block content %}
+    {% load static %}
+
+    <section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        <div class="editor-content-area">
+            <!-- Section Heading -->
+            <br> <br> <br>
+            <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                <h2>Delete Advert</h2>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <fieldset class="form-group">
+                    <h2>Are you sure you want to delete the post "{{ object.propertyTitle }}"?</h2>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                    <a class="btn btn-primary" href="{% url 'property-detail' object.id %}">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+
+    </section>
+
+{% endblock %}
